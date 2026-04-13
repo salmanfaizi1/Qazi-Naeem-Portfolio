@@ -5,33 +5,39 @@ document.addEventListener('DOMContentLoaded', () => {
     let scale = 1;
     let lastTap = 0;
 
-    function createItem(i, isPortrait) {
-        const container = document.createElement('div');
-        container.className = isPortrait ? 'image-item portrait-item' : 'image-item landscape-item';
+   function createItem(i, isPortrait) {
+    const container = document.createElement('div');
+    container.className = isPortrait ? 'image-item portrait-item' : 'image-item landscape-item';
 
-        const img = document.createElement('img');
-        img.src = `./images/${i}.jpg`;
-        img.onerror = function() {
-            if (this.src.endsWith('.jpg')) this.src = `./images/${i}.jpeg`;
-            else container.remove();
-        };
+    const img = document.createElement('img');
+    
+    // Updated: removed './images/' prefix
+    img.src = `${i}.jpg`; 
+    
+    img.onerror = function() {
+        // Updated: removed './images/' prefix
+        if (this.src.endsWith('.jpg')) {
+            this.src = `${i}.jpeg`;
+        } else {
+            container.remove();
+        }
+    };
 
-        const label = document.createElement('div');
-        label.className = 'item-label';
-        label.innerText = `Exhibit ${i}`;
+    const label = document.createElement('div');
+    label.className = 'item-label';
+    label.innerText = `Exhibit ${i}`;
 
-        img.onclick = () => {
-            modal.style.display = 'flex';
-            modalImg.src = img.src;
-            scale = 1;
-            modalImg.style.transform = `scale(${scale})`;
-        };
+    img.onclick = () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+        scale = 1;
+        modalImg.style.transform = `scale(${scale})`;
+    };
 
-        container.appendChild(img);
-        container.appendChild(label);
-        galleryGrid.appendChild(container);
-    }
-
+    container.appendChild(img);
+    container.appendChild(label);
+    galleryGrid.appendChild(container);
+}
     // 1-17 Portraits, 18-35 Landscapes
     for (let i = 1; i <= 35; i++) {
         createItem(i, i <= 17);
