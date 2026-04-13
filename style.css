@@ -3,18 +3,17 @@
 body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #fff; overflow-x: hidden; }
 
 /* --- Hero Section Refinement --- */
+/* Update the url to point to the file name directly */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* Ensure this filename matches your background folder image */
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('background/ken-cheung-KonWFWUaAuk-unsplash.jpg') center/cover no-repeat;
+                url('ken-cheung-KonWFWUaAuk-unsplash.jpg') center/cover no-repeat;
     padding: 0 20px;
 }
-
 .hero-content {
     max-width: 850px;
     display: flex;
