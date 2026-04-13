@@ -1,0 +1,136 @@
+/* --- Core Reset --- */
+* { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #fff; overflow-x: hidden; }
+
+/* --- Hero Section Refinement --- */
+/* Update the url to point to the file name directly */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('back.jpg') center/cover no-repeat;
+    padding: 0 20px;
+}
+.hero-content {
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Artist Name - Balanced Size */
+.hero-content h1 { 
+    font-size: clamp(2rem, 6vw, 3.5rem); 
+    letter-spacing: 4px; 
+    text-transform: uppercase;
+    margin-bottom: 15px; /* Adds space below name */
+    line-height: 1.2;
+}
+
+/* Professional Title - Distinct & Readable */
+.sub-title {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: #cccccc;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 25px; /* Adds space below title */
+    font-weight: 300;
+}
+
+/* Bio Description - Passive Voice Style */
+.bio-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #aaaaaa;
+    max-width: 700px;
+    margin-bottom: 30px; /* Adds space before contact */
+}
+
+.bio-text strong {
+    color: #ffffff;
+}
+
+/* Contact Details */
+.contact-info {
+    font-size: 1rem;
+    color: #888888;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+/* Scroll Arrow */
+.scroll-arrow { 
+    text-decoration: none; 
+    color: #fff; 
+    display: block; 
+    animation: bounce 2s infinite; 
+    cursor: pointer; 
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@keyframes bounce { 
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+    40% {transform: translateY(-10px);} 
+}
+
+/* --- Clean Gallery Grid --- */
+.container { padding: 60px 20px; max-width: 1400px; margin: 0 auto; }
+.portfolio-grid { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center;
+}
+
+.image-item {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+.image-item:hover { transform: scale(1.02); }
+
+.portrait-item { width: 300px; }
+.landscape-item { width: 460px; }
+
+.image-item img {
+    width: 100%;
+    height: 350px; 
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.item-label {
+    padding: 10px 0;
+    font-size: 0.65rem; /* Slightly smaller to fit "WORK IN FIBER GLASS" */
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* --- Viewer Modal --- */
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.98); z-index: 9999; touch-action: none; }
+.modal-content-wrapper { width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+#modal-img { 
+    max-width: 95%; 
+    max-height: 85vh; 
+    object-fit: contain; 
+    transition: transform 0.2s ease-out;
+}
+.close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: white; }
+.controls { margin-top: 20px; display: flex; gap: 10px; }
+.controls button { padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer; font-weight: bold; background: #fff; }
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    .portrait-item, .landscape-item { width: 100%; }
+    .image-item img { height: auto; aspect-ratio: 1/1; }
+    .hero-content h1 { font-size: 2.2rem; }
+}
